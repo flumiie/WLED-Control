@@ -14,6 +14,8 @@ path = "gen/bin/desktop.rs"
 [dependencies]
 mobile-entry-point = "0.1.0"
 winit = "0.23.0"
+simple_logger = "*"
+dioxus-hot-reload = "0.1.1"
 
 [target.'cfg(target_os = "android")'.dependencies]
 android_logger = "0.9.0"

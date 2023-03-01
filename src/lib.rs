@@ -1,3 +1,4 @@
+use dioxus_hot_reload::hot_reload_init;
 use mobile_entry_point::mobile_entry_point;
 use winit::{
     event::{Event, WindowEvent},
@@ -22,6 +23,7 @@ fn init_logging() {
 #[mobile_entry_point]
 fn main() {
     init_logging();
+    hot_reload_init!();
     let event_loop = EventLoop::new();
 
     let window = WindowBuilder::new()
@@ -45,4 +47,13 @@ fn main() {
             _ => (),
         }
     });
+}
+
+extern "C" {
+    fn togglePower();
+}
+
+#[no_mangle]
+pub extern "C" fn run() {
+    unsafe { togglePower() }
 }
